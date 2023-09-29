@@ -17,7 +17,7 @@ public class Boardright : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        yPosition = yPosition + 0.001f;
+        yPosition = yPosition + 0.001f * Time.deltaTime;
         transform.position = new Vector3(xPosition, yPosition, 0f);
     }
 }
