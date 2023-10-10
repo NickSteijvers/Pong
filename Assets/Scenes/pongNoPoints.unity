@@ -584,6 +584,7 @@ MonoBehaviour:
   scoreText: {fileID: 1822547718}
   leftscore: 0
   rightscore: 0
+  winScore: 10
 --- !u!50 &861614045
 Rigidbody2D:
   serializedVersion: 4

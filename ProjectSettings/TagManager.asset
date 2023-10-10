@@ -9,6 +9,7 @@ TagManager:
   - left paddle
   - verticalWallright
   - verticalWallleft
+  - Obstacle
   layers:
   - Default
   - TransparentFX
