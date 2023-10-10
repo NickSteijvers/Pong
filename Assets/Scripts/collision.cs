@@ -5,6 +5,7 @@ using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
 using JetBrains.Annotations;
+using TMPro;
 
 public class collision : MonoBehaviour
 {
@@ -12,11 +13,18 @@ public class collision : MonoBehaviour
     public float yPosition = 2f;
     public float xSpeed = 2f;
     public float ySpeed = 2f;
-    float pointleft = 0;
-    float pointright = 0;
+    public TMP_Text scoreText;
+    public int leftscore = 0;
+    public int rightscore = 0;
     private int _score;
 
     // Start is called before the first frame update
+
+    void resetBall()
+    {
+        xPosition = 0f;
+        yPosition = 0f;
+    }
     void Start()
     {
         transform.position = new Vector3(xPosition, yPosition, 0f);
@@ -52,28 +60,28 @@ public class collision : MonoBehaviour
         else if (collision.gameObject.CompareTag("right paddle"))
         {
             Debug.Log("my butt or my crotch");
-            xSpeed = xSpeed * -1f;
+            xSpeed = xSpeed * -1.1f;
         }
         else if (collision.gameObject.CompareTag("left paddle"))
         {
             Debug.Log("my butt or my crotch");
-            xSpeed = xSpeed * -1f;
+            xSpeed = xSpeed * -1.1f;
         }
         if (collision.gameObject.CompareTag("verticalWallleft"))
         {
             Debug.Log("point added left");
-            pointleft = pointleft + 1f;
-            Debug.Log((int)pointleft);
-            xPosition = 0f;
-            yPosition = 0f;
+            Debug.Log((int)rightscore);
+            resetBall();
+            rightscore++;
+            scoreText.text = leftscore +" - " + rightscore;
         }
         else if (collision.gameObject.CompareTag("verticalWallright"))
         {
             Debug.Log("point added right");
-            pointright = pointright + 1f;
-            Debug.Log((int)pointright);
-            xPosition = 0f;
-            yPosition = 0f;
+            Debug.Log((int)leftscore);
+            resetBall();
+            leftscore++;
+            scoreText.text = leftscore + " - " + rightscore;
         }
 
     }
