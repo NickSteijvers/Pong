@@ -10,6 +10,7 @@ TagManager:
   - verticalWallright
   - verticalWallleft
   - Obstacle
+  - ball
   layers:
   - Default
   - TransparentFX

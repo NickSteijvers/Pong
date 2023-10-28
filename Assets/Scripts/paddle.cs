@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class paddle : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class paddle : MonoBehaviour
         else if (Input.GetKey(down) && transform.position.y > -maxValue)
         {
             transform.Translate(Vector3.down * speed * Time.deltaTime);
+        }
+        else if(Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
         }
     }
    

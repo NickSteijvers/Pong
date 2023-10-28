@@ -7,10 +7,12 @@ using UnityEngine.UI;
 using JetBrains.Annotations;
 using TMPro;
 
+
+
 public class collision : MonoBehaviour
 {
     public float xPosition = 2f;
-    public float yPosition = 2f;
+    public static float yPosition = 2f;
     public float xSpeed = 2f;
     public float ySpeed = 2f;
     public TMP_Text scoreText;
@@ -37,9 +39,13 @@ public class collision : MonoBehaviour
     void Update()
     {
         xPosition = xPosition + xSpeed * Time.deltaTime;
-        //xPosition += xSpeed * Time.deltaTime; short version
+
+        float oldYPosition = yPosition;
+
         yPosition = yPosition + ySpeed * Time.deltaTime;
+
         transform.position = new Vector3(xPosition, yPosition, 0f);
+
         if(leftscore >= winScore)
         {
             scoreText.text = "Left player has won";
@@ -52,52 +58,53 @@ public class collision : MonoBehaviour
             xPosition = 0f;
             yPosition = 0f;
         }
-    }
 
+        
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Auw!");
         if (collision.gameObject.CompareTag("horizontalWall"))
         {
-            Debug.Log("my head or my feet");
+            //Debug.Log("my head or my feet");
             ySpeed = ySpeed * -1f;
         }
         else if (collision.gameObject.CompareTag("verticalWallright"))
         {
-            Debug.Log("my butt or my crotch");
+            //Debug.Log("my butt or my crotch");
             xSpeed = xSpeed * -1f;
         }
         else if (collision.gameObject.CompareTag("verticalWallleft"))
         {
-            Debug.Log("my butt or my crotch");
+            //Debug.Log("my butt or my crotch");
             xSpeed = xSpeed * -1f;
         }
         else if (collision.gameObject.CompareTag("right paddle"))
         {
-            Debug.Log("my butt or my crotch");
+            //Debug.Log("my butt or my crotch");
             xSpeed = xSpeed * -1.1f;
         }
         else if (collision.gameObject.CompareTag("left paddle"))
         {
-            Debug.Log("my butt or my crotch");
+            //Debug.Log("my butt or my crotch");
             xSpeed = xSpeed * -1.1f;
         }
         if (collision.gameObject.CompareTag("verticalWallleft"))
         {
-            Debug.Log("point added left");
-            Debug.Log((int)rightscore);
+            //Debug.Log("point added left");
+            //Debug.Log((int)rightscore);
             resetBall();
             rightscore++;
             scoreText.text = leftscore +" - " + rightscore;
         }
         else if (collision.gameObject.CompareTag("verticalWallright"))
         {
-            Debug.Log("point added right");
-            Debug.Log((int)leftscore);
+            //Debug.Log("point added right");
+            //Debug.Log((int)leftscore);
             resetBall();
             leftscore++;
             scoreText.text = leftscore + " - " + rightscore;
         }
-
     }
 }
