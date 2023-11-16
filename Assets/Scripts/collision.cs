@@ -11,6 +11,7 @@ using TMPro;
 
 public class collision : MonoBehaviour
 {
+    //variables
     public float xPosition = 2f;
     public static float yPosition = 2f;
     public float xSpeed = 2f;
@@ -21,21 +22,28 @@ public class collision : MonoBehaviour
     public int winScore = 10;
     private int _score;
 
-    // Start is called before the first frame update
-
-    void resetBall()
+    /// <summary>
+    /// It resets the ball back to x position 0 and y position is somewhere between y = 4 and y = -4
+    /// </summary>
+    void resetBall() 
     {
         xPosition = 0f;
         yPosition = Random.Range(-4f,4f);
         xSpeed = 1f;
         ySpeed = 1f;
     }
+
+    /// <summary>
+    /// sets the position of the ball to the same value as the xPosition and yPosition variables
+    /// </summary>
     void Start()
     {
         transform.position = new Vector3(xPosition, yPosition, 0f);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// This piece of code moves the ball and checks if the score is high enough and it says who has won.
+    /// </summary>
     void Update()
     {
         xPosition = xPosition + xSpeed * Time.deltaTime;
@@ -62,6 +70,11 @@ public class collision : MonoBehaviour
         
     }
     
+    /// <summary>
+    /// It checks if the ball hits the walls or if it hits the paddles and changes the speed based on what it hits.
+    /// if it hits the walls on the left and on the rigth it adds a point to the scoreboard
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Auw!");

@@ -10,24 +10,27 @@ using System.Runtime.CompilerServices;
 
 public class AIPaddle : MonoBehaviour
 {
+    //variables
     public float yPosition = 2f;
     public float ySpeed = 2f;
 
-    // Start is called before the first frame update
 
+    /// <summary>
+    /// decides the position of the AI paddle
+    /// </summary>
     void Start()
     {
         transform.position = new Vector3(8f, yPosition, 0f);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// makes it so that the paddle follows the ball
+    /// </summary>
     void Update()
     {
         yPosition =  yPosition + ySpeed * Time.deltaTime;
         transform.position = new Vector3(8f, yPosition, 0f);
 
-        //Debug.Log("Direction = " + collision.direction);
-        //Debug.Log("ySpeed = " + ySpeed);
 
         if ((yPosition > collision.yPosition && ySpeed > 0) ||
             (yPosition < collision.yPosition && ySpeed < 0))
@@ -45,6 +48,10 @@ public class AIPaddle : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// checks if the paddle hits a wall
+    /// </summary>
+    /// <param name="collider2D"></param>
     private void OnTriggerEnter2D(Collider2D collider2D)
     {
         Debug.Log("Auw!");

@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class Boardleft : MonoBehaviour
 {
+    //variables
     public float xPosition = -8f;
     public float yPosition = 0f;
 
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// puts board in its start position
+    /// </summary>
     void Start()
     {
         transform.position = new Vector3(xPosition, yPosition, 0f);
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// moves board
+    /// </summary>
     void Update()
     {
         yPosition = yPosition + 0.001f * Time.deltaTime;
